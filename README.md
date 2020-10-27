@@ -13,7 +13,7 @@ V0.3 Kur prasminga, pridėta "klaidų gaudymas" su try/catch metodu.
 V0.4 Sukurta programos spartos analizė
 
 V0.5 Sukurtas programos spartos lyginimas naudojant std::list ir std::vector
-Rezultatas: <br>
+Rezultatas (laikai pateikiami sekundėmis): <br>
 Failo nuskaitymas:
 <table>
 <thead>
@@ -89,3 +89,5 @@ Failo dalijimas:
   </tr>
 </tbody>
 </table>
+
+Išvada: 
