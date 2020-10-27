@@ -90,4 +90,4 @@ Failo dalijimas:
 </tbody>
 </table>
 
-Išvada: 
+Išvada: su labai mažais duomenų kiekiais (pvz. 1000) std::LIST veikia leciau arba taip pat kaip std:STRUCT, o kai didėja duomenų kiekiai pasimato kad std::LIST yra greitesnis, tačiau net analizuojant 10000000  atveji sutaupymas yra 
