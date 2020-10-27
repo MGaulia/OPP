@@ -14,10 +14,11 @@ V0.4 Sukurta programos spartos analizė
 
 V0.5 Sukurtas programos spartos lyginimas naudojant std::list ir std::vector
 Rezultatas: <br>
-Failo nuskaitymas: <table>
+Failo nuskaitymas:
+<table>
 <thead>
   <tr>
-    <th>Kiekis</th>
+    <th>Failo dydis</th>
     <th>STRUCT</th>
     <th>LIST</th>
   </tr>
@@ -25,28 +26,28 @@ Failo nuskaitymas: <table>
 <tbody>
   <tr>
     <td>1000</td>
-    <td>0.004</td>
-    <td>0.003</td>
+    <td>0.005</td>
+    <td>0.007</td>
   </tr>
   <tr>
     <td>10000</td>
-    <td>0.041</td>
+    <td>0.036</td>
     <td>0.034</td>
   </tr>
   <tr>
     <td>100000</td>
-    <td>0.339</td>
-    <td>0.304</td>
+    <td>0.39</td>
+    <td>0.326</td>
   </tr>
   <tr>
     <td>1000000</td>
-    <td>3.243</td>
-    <td>3.224</td>
+    <td>3.349</td>
+    <td>3.253</td>
   </tr>
   <tr>
     <td>10000000</td>
-    <td></td>
-    <td></td>
+    <td>33.504</td>
+    <td>32.185</td>
   </tr>
 </tbody>
 </table>
