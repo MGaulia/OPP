@@ -91,3 +91,5 @@ Failo dalijimas:
 </table>
 
 Išvada: su labai mažais duomenų kiekiais (pvz. 1000) std::LIST veikia leciau arba taip pat kaip std:STRUCT, o kai didėja duomenų kiekiai pasimato kad std::LIST yra greitesnis, tačiau net analizuojant 10000000  atveji sutaupymas yra tik apie 1 sekundę.
+
+Kompiuterio su kuriuo daryti testai parametrai : 2.60GHz procesorius, 8 GB RAM, SSD 231 GB dydžio.
