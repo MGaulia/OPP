@@ -1,6 +1,6 @@
-Matas Gaulia <br/>
-Vilniaus Universitetas <br/>
-Obektinio programavimo pratybos<br/>
+<b>Matas Gaulia </b><br/>
+<b>Vilniaus Universitetas </b><br/>
+<b>Obektinio programavimo pratybos</b><br/>
 
 V0.1 Sukurtas duomenų priėmimas iš vartotojo sąsajos<br/>
 V0.1 Sukurtas skaičiavimo būdo (vidurkis arba mediana) pasirinkimas<br/>
@@ -172,3 +172,10 @@ V1.0 Aš iteruodamas per studentų vektorių nustatęs ar studentas "kvailas" ar
 
 <br>
 Išvada: Mano atveju 1-oji strategija pasirodė greičiausia, o naudojant ją, skirtumas tarp naudojamų struktūrų vector ir list nėra didelis net su dideliais duomenų kiekiais
+<br>
+<br>
+<br>
+<b>Instrukcija</b><br>
+1. Parsisiųsti main.cpp failą<br>
+2. Atsidaryti main.cpp failą su tinkama programa (aš naudoju CodeBlocks)<br>
+3. Pasileisti programą<br>
