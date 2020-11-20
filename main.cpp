@@ -1,17 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <math.h>
-#include <cstdlib>
 #include <bits/stdc++.h>
-#include <time.h>
-#include <chrono>
-#include <ctime>
-#include <stdio.h>
-#include <stdlib.h>
-#include <random>
-
 
 using namespace std;
 
@@ -24,166 +11,230 @@ struct studentas
     float rezultatas;
 };
 
-vector<studentas> ivedimas_struct(int kiek)
+double vidurkis(vector<int> nd)
 {
-clock_t begin = clock();
-ifstream failas;
-vector<studentas> studentai;
-        string pavadinimas = "studentai" + to_string(kiek) + ".txt";
-        failas.open(pavadinimas);
-        string temp;
-        for(int i = 0 ; i < kiek; i++)
-            {
-            studentas st;
-            failas>>st.vardas>>st.pavarde;
-            for(int i = 0 ; i < 5;i++){failas>>temp;st.nd.push_back(stoi(temp));}
-            failas>>temp;
-            st.egz = stoi(temp);
-            failas>>temp;
-            st.rezultatas = stof(temp);
-            studentai.push_back(st);
-            }
-            failas.close();
-
-        clock_t end = clock();
-        double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
-        cout<<kiek<<" failo nuskaitymo trukme: "<<laikas_sekundemis<<" sec."<<endl;
-        return studentai;
+    int suma = 0;
+    for(int i: nd)
+    {
+        suma+=i;
+    }
+    return suma/nd.size();
 }
 
-void dalijimas_struct(vector<studentas> studentai)
+vector<studentas> generavimas_vector(int kiek)
 {
-    int dydis = studentai.size();
-    // Dalijimas
+    vector<studentas> studentai;
+    for(int i = 0 ; i < kiek; i++)
+    {
+        studentas temp;
+        temp.vardas = "Vardas" + to_string(i+1);
+        temp.pavarde = "Pavarde" + to_string(i+1);
+        int ND1 = rand()%10 + 1;
+        int ND2 = rand()%10 + 1;
+        int ND3 = rand()%10 + 1;
+        int ND4 = rand()%10 + 1;
+        int ND5 = rand()%10 + 1;
+
+        temp.nd.push_back(ND1);
+        temp.nd.push_back(ND2);
+        temp.nd.push_back(ND3);
+        temp.nd.push_back(ND4);
+        temp.nd.push_back(ND5);
+
+        temp.egz = rand()%10 + 1;
+
+
+        temp.rezultatas = 0.4*vidurkis(temp.nd) + 0.6*temp.egz;
+        studentai.push_back(temp);
+    }
+    return studentai;
+}
+
+void vector_dalijimas_mano_strategija(vector<studentas> studentai)
+{
     clock_t begin = clock();
+
+    int dydis = studentai.size();
     vector<studentas> kvaili;
     vector<studentas> protingi;
     for(int i = 0 ; i < dydis; i++)
-        {
+    {
         studentas stud = studentai.back();
         studentai.pop_back();
         if(stud.egz < 5)
-            {
-                kvaili.push_back(stud);
-            }
-        else
-            {
-                protingi.push_back(stud);
-            }
-
-
+        {
+            kvaili.push_back(stud);
         }
+        else
+        {
+            protingi.push_back(stud);
+        }
+    }
+
     clock_t end = clock();
     double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
-    cout<<dydis<<" failo dalijimo trukme: "<<laikas_sekundemis<<" sec."<<endl;
 
-
+    cout<<dydis<<" VECTOR dalijimas MANO strategija: "<<laikas_sekundemis<<" sec"<<endl;
 }
-
-void testuoti_struct(int kiek)
+void list_dalijimas_mano_strategija(list<studentas> studentai)
 {
-clock_t begin = clock();
-
-vector<studentas> studentai = ivedimas_struct(kiek);
-
-dalijimas_struct(studentai);
-
-clock_t end = clock();
-double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
-
-cout<<endl;
-}
-
-list<studentas> ivedimas_list(int kiek)
-{
-clock_t begin = clock();
-ifstream failas;
-list<studentas> studentai;
-        string pavadinimas = "studentai" + to_string(kiek) + ".txt";
-        failas.open(pavadinimas);
-        string temp;
-        for(int i = 0 ; i < kiek; i++)
-            {
-            studentas st;
-            failas>>st.vardas>>st.pavarde;
-            for(int i = 0 ; i < 5;i++){failas>>temp;st.nd.push_back(stoi(temp));}
-            failas>>temp;
-            st.egz = stoi(temp);
-            failas>>temp;
-            st.rezultatas = stof(temp);
-            studentai.push_back(st);
-            }
-            failas.close();
-
-        clock_t end = clock();
-        double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
-        cout<<kiek<<" failo nuskaitymo trukme: "<<laikas_sekundemis<<" sec."<<endl;
-        return studentai;
-}
-
-
-void dalijimas_list(list<studentas> studentai)
-{
-    int dydis = studentai.size();
-    // Dalijimas
     clock_t begin = clock();
-    list<studentas> kvaili;
-    list<studentas> protingi;
+
+    int dydis = studentai.size();
+    vector<studentas> kvaili;
+    vector<studentas> protingi;
     for(int i = 0 ; i < dydis; i++)
-        {
+    {
         studentas stud = studentai.back();
         studentai.pop_back();
         if(stud.egz < 5)
-            {
-                kvaili.push_back(stud);
-            }
-        else
-            {
-                protingi.push_back(stud);
-            }
-
-
+        {
+            kvaili.push_back(stud);
         }
+        else
+        {
+            protingi.push_back(stud);
+        }
+    }
+
     clock_t end = clock();
     double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
-    cout<<dydis<<" failo dalijimo trukme: "<<laikas_sekundemis<<" sec."<<endl;
 
-
+    cout<<dydis<<" LIST dalijimas MANO strategija: "<<laikas_sekundemis<<" sec"<<endl;
 }
 
-void testuoti_list(int kiek)
+void vector_dalijimas_1_strategija(vector<studentas> studentai)
 {
-clock_t begin = clock();
+    clock_t begin = clock();
 
-list<studentas> studentai = ivedimas_list(kiek);
+    int dydis = studentai.size();
+    vector<studentas> kvaili;
+    vector<studentas> protingi;
+    for(int i = 0 ; i < dydis; i++)
+    {
+        studentas stud = studentai[i];
+        if(stud.egz < 5)
+        {
+            kvaili.push_back(stud);
+        }
+        else
+        {
+            protingi.push_back(stud);
+        }
 
-dalijimas_list(studentai);
 
-clock_t end = clock();
-double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
+    }
 
-cout<<endl;
+    clock_t end = clock();
+    double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout<<dydis<<" VECTOR dalijimas 1-ja strategija: "<<laikas_sekundemis<<" sec"<<endl;
 }
 
+void list_dalijimas_1_strategija(list<studentas> studentai)
+{
+    clock_t begin = clock();
+
+    int dydis = studentai.size();
+    vector<studentas> kvaili;
+    vector<studentas> protingi;
+    for(studentas stud: studentai)
+    {
+        if(stud.egz < 5)
+        {
+            kvaili.push_back(stud);
+        }
+        else
+        {
+            protingi.push_back(stud);
+        }
+    }
+
+    clock_t end = clock();
+    double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout<<dydis<<" LIST dalijimas 1-ja strategija: "<<laikas_sekundemis<<" sec"<<endl;
+}
+
+void vector_dalijimas_2_strategija(vector<studentas> studentai)
+{
+    clock_t begin = clock();
+
+    int dydis = studentai.size();
+    vector<studentas> kvaili;
+    for(studentas stud: studentai)
+    {
+        if(stud.egz < 5)
+        {
+            kvaili.push_back(stud);
+        }
+
+    }
+    studentai.erase(std::remove_if(studentai.begin(), studentai.end(), [](studentas stud)
+    {
+        return stud.egz < 5;
+    }), studentai.end());
+
+    clock_t end = clock();
+    double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout<<dydis<<" VECTOR dalijimas 2-ja strategija: "<<laikas_sekundemis<<" sec"<<endl;
+}
+
+void list_dalijimas_2_strategija(list<studentas> studentai)
+{
+    clock_t begin = clock();
+
+    int dydis = studentai.size();
+    vector<studentas> kvaili;
+    for(studentas stud: studentai)
+    {
+        if(stud.egz < 5)
+        {
+            kvaili.push_back(stud);
+        }
+
+    }
+    studentai.erase(std::remove_if(studentai.begin(), studentai.end(), [](studentas stud)
+    {
+        return stud.egz < 5;
+    }), studentai.end());
+
+    clock_t end = clock();
+    double laikas_sekundemis = double(end - begin) / CLOCKS_PER_SEC;
+
+    cout<<dydis<<" LIST dalijimas 2-ja strategija: "<<laikas_sekundemis<<" sec"<<endl;
+}
+
+void testuoti(int kiek)
+{
+    vector<studentas> studentai_vector =  generavimas_vector(kiek);
+    list<studentas> studentai_list;
+    copy(studentai_vector.begin(), studentai_vector.end(), back_inserter(studentai_list));
+
+    vector_dalijimas_mano_strategija(studentai_vector);
+    list_dalijimas_mano_strategija(studentai_list);
+
+    vector_dalijimas_1_strategija(studentai_vector);
+    list_dalijimas_1_strategija(studentai_list);
+
+    vector_dalijimas_2_strategija(studentai_vector);
+    list_dalijimas_2_strategija(studentai_list);
+    cout<<endl;
+
+}
 
 int main()
 {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     srand((time_t)ts.tv_nsec);
-    cout<<"STRUCT TESTAVIMAS"<<endl;
-    testuoti_struct(1000);
-    testuoti_struct(10000);
-    testuoti_struct(100000);
-    testuoti_struct(1000000);
-    testuoti_struct(10000000);
 
-   cout<<"LIST TESTAVIMAS"<<endl;
-   testuoti_list(1000);
-   testuoti_list(10000);
-   testuoti_list(100000);
-   testuoti_list(1000000);
-   testuoti_list(10000000);
+    testuoti(1000);
+    testuoti(10000);
+    testuoti(100000);
+    testuoti(1000000);
+    testuoti(10000000);
 
     return 0;
 }
